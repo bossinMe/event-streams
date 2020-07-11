@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "event": {
+      "enum": [ "MECHANIC_CHANGES_OIL" ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "jobRole": {
+          "enum": [ "JNR_MECHANIC", "SNR_MECHANIC" ]
+        }
+      },
+      "required": [ "id", "jobRole" ],
+      "additionalProperties": false
+    },
+    "vehicle": {
+      "type": "object",
+      "properties": {
+        "vin": {
+          "type": "string",
+          "minLength": 17,
+          "maxLength": 17
+        },
+        "mileage": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 2147483647
+        }
+      },
+      "required": [ "vin", "mileage" ],
+      "additionalProperties": false
+    }
+  },
+  "required": [ "event", "timestamp", "employee", "vehicle" ],
+  "additionalProperties": false
+}

@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "event": {
+      "enum": [ "TRUCK_DEPARTS" ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "vehicle": {
+      "type": "object",
+      "properties": {
+        "vin": {
+          "type": "string",
+          "minLength": 17,
+          "maxLength": 17
+        },
+        "mileage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        }
+      },
+      "required": [ "vin", "mileage" ],
+      "additionalProperties": false
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "elevation": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        }
+      },
+      "required": [ "latitude", "longitude", "elevation" ],
+      "additionalProperties": false
+    }
+  },
+  "required": [ "event", "timestamp", "vehicle", "location" ],
+  "additionalProperties": false
+}

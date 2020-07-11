@@ -1,0 +1,16 @@
+{
+  "jsonpaths": [
+    "$.event",
+    "$.timestamp",
+    "$.customer.id",
+    "$.customer.isVip",
+    "$.employee.id",
+    "$.employee.jobRole",
+    "$.location.elevation",
+    "$.location.latitude",
+    "$.location.longitude",
+    "$.package.id",
+    "$.vehicle.mileage",
+    "$.vehicle.vin"
+  ]
+}

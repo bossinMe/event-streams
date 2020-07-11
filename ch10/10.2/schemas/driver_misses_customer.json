@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "properties": {
+    "event": {
+      "enum": [ "DRIVER_MISSES_CUSTOMER" ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "elevation": {
+          "type": "integer",
+          "minimum": -32768,
+          "maximum": 32767
+        }
+      },
+      "required": [ "latitude", "longitude", "elevation" ],
+      "additionalProperties": false
+    },
+    "employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "jobRole": {
+          "enum": [ "JNR_DRIVER", "SNR_DRIVER" ]
+        }
+      },
+      "required": [ "id", "jobRole" ],
+      "additionalProperties": false
+    },
+    "package": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [ "id" ],
+      "additionalProperties": false
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "isVip": {
+          "type": "boolean"
+        }
+      },
+      "required": [ "id", "isVip" ],
+      "additionalProperties": false
+    }
+  },
+  "required": [ "event", "timestamp", "employee", "package", "customer", "location" ],
+  "additionalProperties": false
+}
